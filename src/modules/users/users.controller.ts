@@ -7,17 +7,17 @@ export class UsersController {
   constructor(private usersService: UsersService) {}
 
   @Get()
-  findAll(): string | string[] {
-    return 'THIS RETURNS ALL USERS';
+  findAll() {
+    return this.usersService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.usersService.findUserById(id);
+  findOne(@Param('id') id: number) {
+    return this.usersService.findOne(id);
   }
 
   @Post()
   createOne(@Body() user: CreateUserDto) {
-    return this.usersService.createUser(user);
+    return this.usersService.createOne(user);
   }
 }
